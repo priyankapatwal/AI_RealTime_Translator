@@ -3,33 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Voice Translator with Sentiment Analysis</title>
+    <title>AI Voice Translator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Voice Translator with Sentiment Analysis</h1>
-    <button id="startButton">Start Recording</button>
-    <div id="output">
-        <p><strong>Captured Text:</strong> <span id="capturedText"></span></p>
-        <p><strong>Translated Text:</strong> <span id="translatedText"></span></p>
-        <p><strong>Sentiment:</strong> <span id="sentiment"></span></p>
+    <div class="container">
+        <header class="header">
+            <h1>AI Voice Translator</h1>
+            <p>Translate languages and analyze sentiment in real-time</p>
+        </header>
+
+        <main>
+            <div class="status-section">
+                <h2>Status: <span id="status">Awaiting action...</span></h2>
+            </div>
+
+            <div class="controls">
+                <button id="start" class="btn start-btn">Start Listening</button>
+                <button id="stop" class="btn stop-btn" disabled>Stop</button>
+            </div>
+
+            <div class="output-section">
+                <div class="output-box">
+                    <h3>Translation:</h3>
+                    <p id="translated-text" class="output">Translation will appear here...</p>
+                </div>
+
+                <div class="output-box">
+                    <h3>Sentiment Analysis:</h3>
+                    <p id="sentiment-text" class="output">Sentiment analysis will appear here...</p>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>Powered by AI & NLP Technologies</p>
+        </footer>
     </div>
 
-    <script>
-        document.getElementById("startButton").addEventListener("click", () => {
-            fetch("/process", {
-                method: "POST"
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.error) {
-                    alert("Error: " + data.error);
-                } else {
-                    document.getElementById("capturedText").textContent = data.captured_text;
-                    document.getElementById("translatedText").textContent = data.translated_text;
-                    document.getElementById("sentiment").textContent = data.sentiment;
-                }
-            });
-        });
-    </script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

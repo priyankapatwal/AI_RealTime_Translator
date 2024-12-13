@@ -1,0 +1,120 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header Section */
+.header {
+    text-align: center;
+    padding: 20px 10px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 8px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.header p {
+    margin: 5px 0;
+    font-size: 1rem;
+}
+
+/* Status Section */
+.status-section {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.status-section h2 {
+    font-size: 1.2rem;
+}
+
+/* Controls Section */
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.start-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.start-btn:hover {
+    background-color: #218838;
+}
+
+.stop-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.stop-btn:disabled {
+    background-color: #e0e0e0;
+    color: #666;
+    cursor: not-allowed;
+}
+
+/* Output Section */
+.output-section {
+    margin-top: 30px;
+}
+
+.output-box {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.output-box h3 {
+    margin: 0;
+    color: #555;
+}
+
+.output {
+    margin: 10px 0 0;
+    font-size: 1rem;
+    color: #333;
+    word-wrap: break-word;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* Responsiveness */
+@media (max-width: 600px) {
+    .btn {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+    }
+}

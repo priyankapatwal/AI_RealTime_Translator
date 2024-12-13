@@ -3,6 +3,7 @@ import speech_recognition as sr
 from googletrans import Translator
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import pyttsx3
+import os
 
 app = Flask(__name__)
 
@@ -15,6 +16,7 @@ sentiment_analyzer = SentimentIntensityAnalyzer()
 tts = pyttsx3.init()
 tts.setProperty('rate', 150)
 tts.setProperty('volume', 1.0)
+
 
 def capture_speech():
     with sr.Microphone() as source:
@@ -52,7 +54,25 @@ def process():
         })
     except Exception as e:
         return jsonify({'error': str(e)})
+    
+    
+@app.route('/process_audio', methods=['POST'])
+def process_audio():
+    audio_file = request.files['audio']
+    audio_path = os.path.join('temp', audio_file.filename)
+    audio_file.save(audio_path)
+
+    # Process the audio (replace with actual logic)
+    translation = "Dynamic translation here"  # Replace with your translation model
+    sentiment = "Dynamic sentiment here"      # Replace with your sentiment analysis model
+
+    # Delete the temporary file
+    os.remove(audio_path)
+
+    return jsonify({'translation': translation, 'sentiment': sentiment})
 
 if __name__ == '__main__':
     app.run(debug=True)
+    
+
 
